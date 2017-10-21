@@ -247,5 +247,41 @@ namespace Core.Utilities {
         public static T FromJson<T>(this string json) => JsonConvert.DeserializeObject<T>(json);
 
         #endregion Jsons
+
+        #region Numbers
+
+        /// <summary>
+        /// Calculates the percentage of the number to the given total.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="total">The total number</param>
+        /// <returns>the percentage of the number to the given total.</returns>
+        public static double PercentageOf(this double value, double total) => (value / total) * 100;
+
+        /// <summary>
+        /// Calculates the percentage of the number to the given total.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="total">The total number</param>
+        /// <returns>the percentage of the number to the given total.</returns>
+        public static double PercentageOf(this int value, int total) => (value / total) * 100;
+
+        /// <summary>
+        /// Calculates the percentage of the number to the given total.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="total">The total number</param>
+        /// <returns>the percentage of the number to the given total.</returns>
+        public static double PercentageOf(this int value, double total) => (value / total) * 100;
+
+        /// <summary>
+        /// Calculates the percentage of the number to the given total.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="total">The total number</param>
+        /// <returns>the percentage of the number to the given total.</returns>
+        public static double PercentageOf(this double value, int total) => (value / total) * 100;
+
+        #endregion Numbers
     }
 }
