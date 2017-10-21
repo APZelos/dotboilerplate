@@ -188,8 +188,25 @@ namespace Core.Utilities {
         /// </summary>
         /// <typeparam name="T">The type that the object wil be casted to.</typeparam>
         /// <param name="obj"></param>
-        /// <returns>the object int the given type/</returns>
+        /// <returns>the object int the given type.</returns>
         public static T To<T>(this object obj) => (T) obj;
+
+        /// <summary>
+        /// Tries to cast the object ot the given type.
+        /// Returns null if do not succeed.
+        /// </summary>
+        /// <typeparam name="T">The type that the object wil be casted to.</typeparam>
+        /// <param name="obj"></param>
+        /// <returns>the object int the given type or null if do not succeed/</returns>
+        public static T ToOrNull<T>(this object obj) where T : class {
+            T result = null;
+            try {
+                result = (T) obj;
+            } catch (Exception exception) {
+                // TODO handle exception.
+            }
+            return result;
+        }
 
         #endregion ChangeType
     }
