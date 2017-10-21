@@ -125,6 +125,22 @@ namespace Core.Utilities {
         /// <returns>true if the class's value is null.</returns>
         public static bool IsNull<T>(this T value) where T : class => value == null;
 
+        /// <summary>
+        /// Indicates if the struct is not null.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="value"></param>
+        /// <returns>true if the struct's value is not null.</returns>
+        public static bool IsNotNull<T>(this T? value) where T : struct => value != null;
+
+        /// <summary>
+        /// Indicates if the class is not null.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="value"></param>
+        /// <returns>true if the class's value is not null.</returns>
+        public static bool IsNotNull<T>(this T value) where T : class => value != null;
+
         #endregion Nulls
     }
 }
