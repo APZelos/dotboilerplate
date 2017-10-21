@@ -179,5 +179,18 @@ namespace Core.Utilities {
         public static bool IsNotEmpty<T>(this ICollection<T> collection) => collection != null && collection.Count > 0;
 
         #endregion ICollections
+
+        #region ChangeType
+
+        /// <summary>
+        /// Tries to cast the object ot the given type.
+        /// Throws exception if do not succeed.
+        /// </summary>
+        /// <typeparam name="T">The type that the object wil be casted to.</typeparam>
+        /// <param name="obj"></param>
+        /// <returns>the object int the given type/</returns>
+        public static T To<T>(this object obj) => (T) obj;
+
+        #endregion ChangeType
     }
 }
