@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace Core.Utilities {
     public static class Extensions {
@@ -226,5 +227,17 @@ namespace Core.Utilities {
         }
 
         #endregion ChangeType
+
+        #region Jsons
+
+        /// <summary>
+        /// Serializes the obj to json string.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="obj"></param>
+        /// <returns>the object serialized to json string.</returns>
+        public static string ToJson<T>(this T obj) => JsonConvert.SerializeObject(obj);
+
+        #endregion Jsons
     }
 }
