@@ -313,5 +313,17 @@ namespace Core.Utilities {
         public static bool IsBetween<T>(this T value, T min, T max) => 
             Comparer<T>.Default.Compare(value, min) >= 0 && 
             Comparer<T>.Default.Compare(value, max) <= 0;
+
+        /// <summary>
+        /// Indicates if the value is not between the min and max values.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="value">The value that will be checked.</param>
+        /// <param name="min">The minimum value.</param>
+        /// <param name="max">The maximum value/</param>
+        /// <returns>true if the value is not between the min and max values.</returns>
+        public static bool IsNotBetween<T>(this T value, T min, T max) => 
+            Comparer<T>.Default.Compare(value, min) < 0 || 
+            Comparer<T>.Default.Compare(value, max) > 0;
     }
 }
