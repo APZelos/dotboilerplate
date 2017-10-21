@@ -141,6 +141,14 @@ namespace Core.Utilities {
         /// <returns>true if the class's value is not null.</returns>
         public static bool IsNotNull<T>(this T value) where T : class => value != null;
 
+        /// <summary>
+        /// Indicates if the struct is null or has default value.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="value"></param>
+        /// <returns>true if the value of the struct is null or its default value.</returns>
+        public static bool IsNullOrDefault<T>(this T? value) where T : struct => default(T).Equals(value.GetValueOrDefault());
+
         #endregion Nulls
     }
 }
