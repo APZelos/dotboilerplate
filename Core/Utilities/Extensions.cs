@@ -87,7 +87,7 @@ namespace Core.Utilities {
         /// </summary>
         /// <param name="str"></param>
         /// <param name="length">The number of char that will be removed. Default: 1.</param>
-        /// <returns></returns>
+        /// <returns>the string with the last char(s) removed.</returns>
         public static string RemoveLast(this string str, int length = 1) => str.Substring(str.Length - length);
 
         /// <summary>
@@ -95,8 +95,15 @@ namespace Core.Utilities {
         /// </summary>
         /// <param name="str"></param>
         /// <param name="length">The number of char that will be removed. Default: 1.</param>
-        /// <returns></returns>
+        /// <returns>the string with the first char(s) removed.</returns>
         public static string RemoveFirst(this string str, int length = 1) => str.Substring(0, length);
+
+        /// <summary>
+        /// Maps the path to server.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns>the path mapped to server.</returns>
+        public static string ServerMapPath(this string path) => System.Web.HttpContext.Current.Server.MapPath(path);
 
         #endregion Strings
     }
