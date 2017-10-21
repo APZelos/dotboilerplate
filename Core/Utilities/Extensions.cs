@@ -170,6 +170,14 @@ namespace Core.Utilities {
         /// <returns>true if the collection is null or has no items.</returns>
         public static bool IsEmpty<T>(this ICollection<T> collection) => collection == null || collection.Count == 0;
 
+        /// <summary>
+        /// Indicates if the collection is not null and has at least one item.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="collection"></param>
+        /// <returns>true if the collection is not null and has at least one item.</returns>
+        public static bool IsNotEmpty<T>(this ICollection<T> collection) => collection != null && collection.Count > 0;
+
         #endregion ICollections
     }
 }
