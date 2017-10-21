@@ -68,6 +68,20 @@ namespace Core.Utilities {
                 .Replace(".", "");
         }
 
+        /// <summary>
+        /// Capitalizes, all except the first word, and joins each word in the string.
+        /// </summary>
+        /// <param name="str"></param>
+        /// <param name="currentCulture">If true uses the current culture otherwise the invariant culture. Default: false.</param>
+        /// <returns>a string with each word capitalized, except the first word, and joined.</returns>
+        public static string ToPascalCase(this string str, bool currentCulture = false) {
+            var result = str.ToCamelCase(currentCulture);
+            return new StringBuilder()
+                .Append(result.Substring(0, 1).ToLower())
+                .Append(result.Substring(1))
+                .ToString();
+        }
+
         #endregion Strings
     }
 }
