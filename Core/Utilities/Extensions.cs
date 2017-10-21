@@ -292,5 +292,14 @@ namespace Core.Utilities {
         /// <param name="args">An array of values that teh value will be checked against.</param>
         /// <returns>true if the value is equal to at least one of the given args.</returns>
         public static bool IsIn<T>(this T value, params T[] args) => args.Any(arg => arg.Equals(value));
+
+        /// <summary>
+        /// Indicates if the value is not equal to any of the given args.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="value"></param>
+        /// <param name="args">An array of values that teh value will be checked against.</param>
+        /// <returns>true if the value is not equal to any of the given args.</returns>
+        public static bool IsNotIn<T>(this T value, params T[] args) => args.All(arg => !arg.Equals(value));
     }
 }
