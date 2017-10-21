@@ -283,5 +283,14 @@ namespace Core.Utilities {
         public static double PercentageOf(this double value, int total) => (value / total) * 100;
 
         #endregion Numbers
+
+        /// <summary>
+        /// Indicates if the value is equal to at least one of the given args.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="value"></param>
+        /// <param name="args">An array of values that teh value will be checked against.</param>
+        /// <returns>true if the value is equal to at least one of the given args.</returns>
+        public static bool IsIn<T>(this T value, params T[] args) => args.Any(arg => arg.Equals(value));
     }
 }
