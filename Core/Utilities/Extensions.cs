@@ -106,5 +106,25 @@ namespace Core.Utilities {
         public static string ServerMapPath(this string path) => System.Web.HttpContext.Current.Server.MapPath(path);
 
         #endregion Strings
+
+        #region Nulls
+
+        /// <summary>
+        /// Indicates if the struct is null.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="value"></param>
+        /// <returns>true if the struct's value is null.</returns>
+        public static bool IsNull<T>(this T? value) where T : struct => value == null;
+
+        /// <summary>
+        /// Indicates if the class is null.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="value"></param>
+        /// <returns>true if the class's value is null.</returns>
+        public static bool IsNull<T>(this T value) where T : class => value == null;
+
+        #endregion Nulls
     }
 }
