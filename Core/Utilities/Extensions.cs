@@ -238,6 +238,14 @@ namespace Core.Utilities {
         /// <returns>the object serialized to json string.</returns>
         public static string ToJson<T>(this T obj) => JsonConvert.SerializeObject(obj);
 
+        /// <summary>
+        /// Deserializes the string to the given type.
+        /// </summary>
+        /// <typeparam name="T">The type that the json string will be deserialized to.</typeparam>
+        /// <param name="json"></param>
+        /// <returns>the string deserialized to the given type.</returns>
+        public static T FromJson<T>(this string json) => JsonConvert.DeserializeObject<T>(json);
+
         #endregion Jsons
     }
 }
