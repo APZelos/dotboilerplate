@@ -53,6 +53,21 @@ namespace Core.Utilities {
                     .ToTitleCase(str);
         }
 
+        /// <summary>
+        /// Capitalizes and joins each word in the string.
+        /// </summary>
+        /// <param name="str"></param>
+        /// <param name="currentCulture">If true uses the current culture otherwise the invariant culture. Default: false.</param>
+        /// <returns>a string with each word capitalized and joined.</returns>
+        public static string ToCamelCase(this string str, bool currentCulture = false) {
+            var result = str.ToTitleCase(currentCulture);
+            return result
+                .Replace(" ", "")
+                .Replace("_", "")
+                .Replace("-", "")
+                .Replace(".", "");
+        }
+
         #endregion Strings
     }
 }
