@@ -149,6 +149,15 @@ namespace Core.Utilities {
         /// <returns>true if the value of the struct is null or its default value.</returns>
         public static bool IsNullOrDefault<T>(this T? value) where T : struct => default(T).Equals(value.GetValueOrDefault());
 
+
+        /// <summary>
+        /// Indicates if the struct is not null or has default value.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="value"></param>
+        /// <returns>true if the value of the struct is not null or its default value.</returns>
+        public static bool IsNotNullOrDefault<T>(this T? value) where T : struct => !default(T).Equals(value.GetValueOrDefault());
+
         #endregion Nulls
     }
 }
