@@ -284,6 +284,19 @@ namespace Core.Utilities {
 
         #endregion Numbers
 
+        #region Exceptions
+
+        /// <summary>
+        /// Throws NullReferenceException if object is null.
+        /// </summary>
+        /// <param name="obj"></param>
+        public static void ThrowIfNull(this object obj) {
+            if (obj != null) return;
+            throw new NullReferenceException("Object can't be null!");
+        }
+
+        #endregion Exceptions
+
         /// <summary>
         /// Indicates if the value is equal to at least one of the given args.
         /// </summary>
