@@ -301,5 +301,17 @@ namespace Core.Utilities {
         /// <param name="args">An array of values that teh value will be checked against.</param>
         /// <returns>true if the value is not equal to any of the given args.</returns>
         public static bool IsNotIn<T>(this T value, params T[] args) => args.All(arg => !arg.Equals(value));
+
+        /// <summary>
+        /// Indicates if the value is between the min and max values.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="value">The value that will be checked.</param>
+        /// <param name="min">The minimum value.</param>
+        /// <param name="max">The maximum value/</param>
+        /// <returns>true if the value is between the min and max values.</returns>
+        public static bool IsBetween<T>(this T value, T min, T max) => 
+            Comparer<T>.Default.Compare(value, min) >= 0 && 
+            Comparer<T>.Default.Compare(value, max) <= 0;
     }
 }
