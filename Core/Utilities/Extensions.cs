@@ -82,6 +82,14 @@ namespace Core.Utilities {
                 .ToString();
         }
 
+        /// <summary>
+        /// Removes the last char(s) of the string.
+        /// </summary>
+        /// <param name="str"></param>
+        /// <param name="length">The number of char that will be removed. Default: 1.</param>
+        /// <returns></returns>
+        public static string RemoveLast(this string str, int length = 1) => str.Substring(str.Length - length);
+
         #endregion Strings
     }
 }
