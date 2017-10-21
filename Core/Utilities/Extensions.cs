@@ -159,5 +159,17 @@ namespace Core.Utilities {
         public static bool IsNotNullOrDefault<T>(this T? value) where T : struct => !default(T).Equals(value.GetValueOrDefault());
 
         #endregion Nulls
+
+        #region ICollections
+
+        /// <summary>
+        /// Indicates if the collection is null or has no items.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="collection"></param>
+        /// <returns>true if the collection is null or has no items.</returns>
+        public static bool IsEmpty<T>(this ICollection<T> collection) => collection == null || collection.Count == 0;
+
+        #endregion ICollections
     }
 }
