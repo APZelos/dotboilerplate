@@ -22,6 +22,14 @@ namespace Core.Utilities {
         /// <returns>true if the string is null or empty.</returns>
         public static bool IsNullOrEmpty(this string str) => string.IsNullOrEmpty(str);
 
+        /// <summary>
+        /// Replaces the format item in the string with the string representation of a corresponding object in a specified array.
+        /// </summary>
+        /// <param name="str"></param>
+        /// <param name="args">An object array that contains zero or more objects to format.</param>
+        /// <returns></returns>
+        public static string Format(this string str, params object[] args) => string.Format(str, args);
+
         #endregion Strings
     }
 }
