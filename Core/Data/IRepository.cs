@@ -66,9 +66,9 @@ namespace Core.Data {
         void Attach(T entity);
 
         /// <summary>
-        /// Dettaches entity from the context.
+        /// Detaches entity from the context.
         /// </summary>
-        /// <param name="entity">The entity we want to dettach from the context.</param>
+        /// <param name="entity">The entity we want to detach from the context.</param>
         void Dettach(T entity);
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Core.Data {
     /// <summary>
-    /// An abstract implemention of int IBaseEnity interface.
+    /// An abstract implementation of int IBaseEnity interface.
     /// </summary>
     public abstract class BaseEntity : IBaseEntity, IUID<int> {
 

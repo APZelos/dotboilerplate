@@ -184,19 +184,19 @@ namespace Core.Utilities {
         #region ChangeType
 
         /// <summary>
-        /// Tries to cast the object ot the given type.
+        /// Tries to cast the object to the given type.
         /// Throws exception if do not succeed.
         /// </summary>
-        /// <typeparam name="T">The type that the object wil be casted to.</typeparam>
+        /// <typeparam name="T">The type that the object will be casted to.</typeparam>
         /// <param name="obj"></param>
         /// <returns>the object in the given type.</returns>
         public static T To<T>(this object obj) => (T) obj;
 
         /// <summary>
-        /// Tries to cast the object ot the given type.
+        /// Tries to cast the object to the given type.
         /// Returns null if do not succeed.
         /// </summary>
-        /// <typeparam name="T">The type that the object wil be casted to.</typeparam>
+        /// <typeparam name="T">The type that the object will be casted to.</typeparam>
         /// <param name="obj"></param>
         /// <returns>the object in the given type or null if do not succeed.</returns>
         public static T ToOrNull<T>(this object obj) where T : class {
@@ -210,10 +210,10 @@ namespace Core.Utilities {
         }
 
         /// <summary>
-        /// Tries to cast the object ot the given type.
+        /// Tries to cast the object to the given type.
         /// Returns default value of given type if do not succeed.
         /// </summary>
-        /// <typeparam name="T">The type that the object wil be casted to.</typeparam>
+        /// <typeparam name="T">The type that the object will be casted to.</typeparam>
         /// <param name="obj"></param>
         /// <returns>the object in the given type or the default value of the given type if do not succeed.</returns>
         public static T ToOrDefault<T>(this object obj) {
@@ -302,7 +302,7 @@ namespace Core.Utilities {
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="value"></param>
-        /// <param name="args">An array of values that teh value will be checked against.</param>
+        /// <param name="args">An array of values that the value will be checked against.</param>
         /// <returns>true if the value is equal to at least one of the given args.</returns>
         public static bool IsIn<T>(this T value, params T[] args) => args.Any(arg => arg.Equals(value));
 
@@ -311,7 +311,7 @@ namespace Core.Utilities {
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="value"></param>
-        /// <param name="args">An array of values that teh value will be checked against.</param>
+        /// <param name="args">An array of values that the value will be checked against.</param>
         /// <returns>true if the value is not equal to any of the given args.</returns>
         public static bool IsNotIn<T>(this T value, params T[] args) => args.All(arg => !arg.Equals(value));
 

@@ -10,7 +10,7 @@ namespace Core.Data {
     /// </summary>
     public class RepositoryResult<T> where T: IBaseEntity {
         /// <summary>
-        /// Indicates if the action was successfull.
+        /// Indicates if the action was successful.
         /// </summary>
         public bool Success { get; set; }
 
@@ -20,12 +20,12 @@ namespace Core.Data {
         public string Message { get; set; }
 
         /// <summary>
-        /// The entity after the repository action (null if action was not successfull.)
+        /// The entity after the repository action (null if action was not successful.
         /// </summary>
         public T Entity { get; set; }
 
         /// <summary>
-        /// Generic objet, placeholder for data that must be passed from repository to service.
+        /// Generic object, placeholder for data that must be passed from repository to service.
         /// </summary>
         public object Obj { get; set; }
     }
