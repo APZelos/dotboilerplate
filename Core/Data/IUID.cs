@@ -10,7 +10,7 @@ namespace Core.Data {
     /// and have a unique identifier must implement this interface.
     /// </summary>
     /// <typeparam name="T">The type of unique identifier.</typeparam>
-    interface IUID<T> : IComparable<IUID<T>> {
+    public interface IUID<T> : IComparable<IUID<T>> {
 
         /// <summary>
         /// The PRIMARY KEY constraint uniquely identifies each record in a database table.
