@@ -10,7 +10,7 @@ namespace Core.Data {
     /// must implement this interface. 
     /// It's the top level abstraction of a DB entity
     /// </summary>
-    public interface IBaseEnity {
+    public interface IBaseEntity {
 
     }
 }

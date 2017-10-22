@@ -8,7 +8,7 @@ namespace Core.Data {
     /// <summary>
     /// The result of a repository action.
     /// </summary>
-    public class RepositoryResult<T> where T: IBaseEnity {
+    public class RepositoryResult<T> where T: IBaseEntity {
         /// <summary>
         /// Indicates if the action was successfull.
         /// </summary>
