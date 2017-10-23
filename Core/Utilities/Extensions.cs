@@ -325,6 +325,15 @@ namespace Core.Utilities {
         public static bool IsNotIn<T>(this T value, params T[] args) => args.All(arg => !arg.Equals(value));
 
         /// <summary>
+        /// Indicates if the value is not equal to any of the given args.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="value"></param>
+        /// <param name="args">An array of values that the value will be checked against.</param>
+        /// <returns>true if the value is not equal to any of the given args.</returns>
+        public static bool IsNotIn(this IUID value, params IUID[] args) => args.All(arg => !arg.Id.Equals(value.Id));
+
+        /// <summary>
         /// Indicates if the value is between the min and max values.
         /// </summary>
         /// <typeparam name="T"></typeparam>
