@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Core.Data;
 using Newtonsoft.Json;
 
 namespace Core.Utilities {
@@ -305,6 +306,14 @@ namespace Core.Utilities {
         /// <param name="args">An array of values that the value will be checked against.</param>
         /// <returns>true if the value is equal to at least one of the given args.</returns>
         public static bool IsIn<T>(this T value, params T[] args) => args.Any(arg => arg.Equals(value));
+
+        /// <summary>
+        /// Indicates if the value is equal to at least one of the given args.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="args">An array of values that the value will be checked against.</param>
+        /// <returns>true if the value is equal to at least one of the given args.</returns>
+        public static bool IsIn(this IUID value, params IUID[] args) => args.Any(arg => arg.Id.Equals(value.Id));
 
         /// <summary>
         /// Indicates if the value is not equal to any of the given args.
