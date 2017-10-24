@@ -175,25 +175,25 @@ namespace Core.Utilities {
 
         #endregion Nulls
 
-        #region ICollections
+        #region IEnumerable
 
         /// <summary>
-        /// Indicates if the collection is null or has no items.
+        /// Indicates if the enumerable is null or has no items.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="collection"></param>
-        /// <returns>true if the collection is null or has no items.</returns>
-        public static bool IsEmpty<T>(this ICollection<T> collection) => collection == null || collection.Count == 0;
+        /// <param name="enumerable"></param>
+        /// <returns>true if the enumerable is null or has no items.</returns>
+        public static bool IsEmpty<T>(this IEnumerable<T> enumerable) => enumerable == null || enumerable.Count() == 0;
 
         /// <summary>
-        /// Indicates if the collection is not null and has at least one item.
+        /// Indicates if the enumerable is not null and has at least one item.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="collection"></param>
-        /// <returns>true if the collection is not null and has at least one item.</returns>
-        public static bool IsNotEmpty<T>(this ICollection<T> collection) => collection != null && collection.Count > 0;
+        /// <param name="enumerable"></param>
+        /// <returns>true if the enumerable is not null and has at least one item.</returns>
+        public static bool IsNotEmpty<T>(this IEnumerable<T> enumerable) => enumerable != null && enumerable.Count() > 0;
 
-        #endregion ICollections
+        #endregion IEnumerable
 
         #region ChangeType
 
