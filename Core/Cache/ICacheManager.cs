@@ -38,6 +38,16 @@ namespace Core.Cache {
         IEnumerable<T> GetByPattern<T>(string pattern);
 
         /// <summary>
+        /// Tries to get all the values stored in the cache
+        /// that their keys starts with the given pattern.
+        /// </summary>
+        /// <typeparam name="T">Type of the stored values.</typeparam>
+        /// <param name="pattern">The pattern that the keys must start with.</param>
+        /// <param name="values">A variable that will hold the values stored with the given pattern, if any exist.</param>
+        /// <returns>true if any value was found stored with the given key.</returns>
+        bool TryGetByPattern<T>(string pattern, out IEnumerable<T> values);
+
+        /// <summary>
         /// Sets the value with the given key to the cache.
         /// </summary>
         /// <param name="key">The key that the given value will be stored with.</param>
