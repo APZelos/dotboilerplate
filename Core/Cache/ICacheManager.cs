@@ -28,6 +28,16 @@ namespace Core.Cache {
         bool TryGet<T>(string key, out T value);
 
         /// <summary>
+        /// Gets all the values stored in the cache
+        /// that their keys starts with the given pattern.
+        /// All values must be of the same type.
+        /// </summary>
+        /// <typeparam name="T">Type of the stored values.</typeparam>
+        /// <param name="pattern">The pattern that the keys must start with.</param>
+        /// <returns>an enumerable that contains all the values stored in the cache that their keys starts with the given pattern.</returns>
+        IEnumerable<T> GetByPattern<T>(string pattern);
+
+        /// <summary>
         /// Sets the value with the given key to the cache.
         /// </summary>
         /// <param name="key">The key that the given value will be stored with.</param>
