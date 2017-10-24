@@ -54,8 +54,21 @@ namespace Core.Cache {
             return true;
         }
 
+        /// <summary>
+        /// Tries to get all the values stored in the cache
+        /// that their keys starts with the given pattern.
+        /// All values must be of the same type.
+        /// </summary>
+        /// <typeparam name="T">Type of the stored values.</typeparam>
+        /// <param name="pattern">The pattern that the keys must start with.</param>
+        /// <param name="values">A variable that will hold the values stored with the given pattern, if any exist.</param>
+        /// <returns>true if any value was found stored with the given key.</returns>
         public bool TryGetByPattern<T>(string pattern, out IEnumerable<T> values) {
-            throw new NotImplementedException();
+            var regex = pattern.ToSingleLineCaseInsensitiveRegex(true);
+            values = Cache
+                .Where(item => regex.IsMatch(item.Key))
+                .Select(item => (T)item.Value);
+            return values.IsNotEmpty();
         }
 
         /// <summary>
