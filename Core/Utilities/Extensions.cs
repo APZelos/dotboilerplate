@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Core.Data;
 using Newtonsoft.Json;
+using System.Text.RegularExpressions;
 
 namespace Core.Utilities {
     public static class Extensions {
@@ -106,6 +107,18 @@ namespace Core.Utilities {
         /// <param name="path"></param>
         /// <returns>the path mapped to server.</returns>
         public static string ServerMapPath(this string path) => System.Web.HttpContext.Current.Server.MapPath(path);
+
+        /// <summary>
+        /// Creates a Regex with SingleLine and IgnoreCase options.
+        /// If isCompile is set to true adds Compile option.
+        /// </summary>
+        /// <param name="pattern">The Regex pattern.</param>
+        /// <param name="isCompile">Indicates if regex will have Compile option. Default: false.</param>
+        /// <returns>a Regex with SingleLine and IgnoreCase options.</returns>
+        public static Regex ToSingleLineCaseInsensitiveRegex(this string pattern, bool isCompile = false) =>
+            isCompile ? 
+            new Regex(pattern, RegexOptions.Singleline | RegexOptions.Compiled | RegexOptions.IgnoreCase) :
+            new Regex(pattern, RegexOptions.Singleline | RegexOptions.IgnoreCase);
 
         #endregion Strings
 
