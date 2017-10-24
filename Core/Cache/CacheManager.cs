@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Core.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Caching;
@@ -24,8 +25,19 @@ namespace Core.Cache {
         /// <returns>the value stored with the given key.</returns>
         public T Get<T>(string key) => (T)Cache[key];
 
+        /// <summary>
+        /// Gets all the values stored in the cache
+        /// that their keys starts with the given pattern.
+        /// All values must be of the same type.
+        /// </summary>
+        /// <typeparam name="T">Type of the stored values.</typeparam>
+        /// <param name="pattern">The pattern that the keys must start with.</param>
+        /// <returns>an enumerable that contains all the values stored in the cache that their keys starts with the given pattern.</returns>
         public IEnumerable<T> GetByPattern<T>(string pattern) {
-            throw new NotImplementedException();
+            var regex = pattern.ToSingleLineCaseInsensitiveRegex(true);
+            return Cache
+                .Where(item => regex.IsMatch(item.Key))
+                .Select(item => (T)item.Value);
         }
 
         /// <summary>
