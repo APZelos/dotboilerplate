@@ -27,12 +27,12 @@ namespace Core.Cache {
 
         /// <summary>
         /// Gets all the values stored in the cache
-        /// that their keys starts with the given pattern.
+        /// that their keys match the given pattern.
         /// All values must be of the same type.
         /// </summary>
         /// <typeparam name="T">Type of the stored values.</typeparam>
-        /// <param name="pattern">The pattern that the keys must start with.</param>
-        /// <returns>an enumerable that contains all the values stored in the cache that their keys starts with the given pattern.</returns>
+        /// <param name="pattern">The pattern that the keys must match.</param>
+        /// <returns>an enumerable that contains all the values stored in the cache that their keys match the given pattern.</returns>
         public IEnumerable<T> GetByPattern<T>(string pattern) {
             var regex = pattern.ToSingleLineCaseInsensitiveRegex(true);
             return Cache
@@ -56,11 +56,11 @@ namespace Core.Cache {
 
         /// <summary>
         /// Tries to get all the values stored in the cache
-        /// that their keys starts with the given pattern.
+        /// that their keys match the given pattern.
         /// All values must be of the same type.
         /// </summary>
         /// <typeparam name="T">Type of the stored values.</typeparam>
-        /// <param name="pattern">The pattern that the keys must start with.</param>
+        /// <param name="pattern">The pattern that the keys must match.</param>
         /// <param name="values">A variable that will hold the values stored with the given pattern, if any exist.</param>
         /// <returns>true if any value was found stored with the given key.</returns>
         public bool TryGetByPattern<T>(string pattern, out IEnumerable<T> values) {
