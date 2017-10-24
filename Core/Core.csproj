@@ -48,6 +48,7 @@
     <Compile Include="Data\BaseEntity.cs" />
     <Compile Include="Data\IBaseEntity.cs" />
     <Compile Include="Data\IRepository.cs" />
+    <Compile Include="Data\ITableName.cs" />
     <Compile Include="Data\IUID.cs" />
     <Compile Include="Data\RepositoryResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
