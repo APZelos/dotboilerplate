@@ -86,8 +86,20 @@ namespace Core.Cache {
         /// <param name="key">The key of the value that is going to be removed.</param>
         public void Remove(string key) => Cache.Remove(key);
 
+        /// <summary>
+        /// Removes the value that is stored in the cache
+        /// with the the given key.
+        /// </summary>
+        /// <param name="key">The key of the value that is going to be removed.</param>
         public void RemoveByPattern(string pattern) {
-            throw new NotImplementedException();
+            var regex = pattern.ToSingleLineCaseInsensitiveRegex(true);
+            var keysToRemove = Cache
+                .Where(item => regex.IsMatch(item.Key))
+                .Select(item => item.Key);
+            foreach(var key in keysToRemove) {
+                Remove(key);
+            }
+
         }
 
         /// <summary>
