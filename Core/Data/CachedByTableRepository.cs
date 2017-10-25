@@ -51,7 +51,12 @@ namespace Core.Data {
         }
 
         #region Public Methods
-        public Task<IQueryable<T>> Query => throw new NotImplementedException();
+        /// <summary>
+        /// Executes a query on the table of repository's entity type.
+        /// This method always gets data from the DB.
+        /// </summary>
+        public async Task<IEnumerable<T>> Query(Func<IQueryable<T>, IEnumerable<T>> query)
+            => await _repository.Query(query);
         
         /// <summary>
         /// Get entity by id.
@@ -164,7 +169,7 @@ namespace Core.Data {
             if (await _cacheManager.IsSet(TableKey))
                 await _cacheManager.Remove(TableKey);
 
-            var table = (await _repository.Query).ToList();
+            var table = (await _repository.Query(QueryForCache)).ToList();
             await _cacheManager.Set(TableKey, table, 60);
 
             return table;

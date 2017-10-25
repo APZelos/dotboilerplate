@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Core.Data {
@@ -44,10 +46,9 @@ namespace Core.Data {
         Task<RepositoryResult<T>> Remove(object id);
 
         /// <summary>
-        /// Exposes an object that allows querying 
-        /// the table of repository's entity type.
+        /// Executes a query on the table of repository's entity type.
         /// </summary>
-        Task<IQueryable<T>> Query { get; }
+        Task<IEnumerable<T>> Query(Func<IQueryable<T>, IEnumerable<T>> query);
 
         /// <summary>
         /// Saves changes for this table.
