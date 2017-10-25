@@ -158,9 +158,6 @@ namespace Core.Data {
         /// </summary>
         /// <returns>an enumerable with the data that were cached.</returns>
         private async Task<IEnumerable<T>> CacheTable() {
-            if (await _cacheManager.IsSet(TableKey))
-                await _cacheManager.Remove(TableKey);
-
             var table = (await _repository.Query(QueryForCache)).ToList();
             await _cacheManager.Set(TableKey, table, 60);
 
