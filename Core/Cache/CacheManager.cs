@@ -23,7 +23,7 @@ namespace Core.Cache {
         /// <typeparam name="T">Type of the stored value.</typeparam>
         /// <param name="key">The key the value is stored with.</param>
         /// <returns>the value stored with the given key.</returns>
-        public T Get<T>(string key) => (T)Cache[key];
+        public async Task<T> Get<T>(string key) => (T)Cache[key];
 
         /// <summary>
         /// Gets all the values stored in the cache
@@ -33,42 +33,11 @@ namespace Core.Cache {
         /// <typeparam name="T">Type of the stored values.</typeparam>
         /// <param name="pattern">The pattern that the keys must match.</param>
         /// <returns>an enumerable that contains all the values stored in the cache that their keys match the given pattern.</returns>
-        public IEnumerable<T> GetByPattern<T>(string pattern) {
+        public async Task<IEnumerable<T>> GetByPattern<T>(string pattern) {
             var regex = pattern.ToSingleLineCaseInsensitiveRegex(true);
             return Cache
                 .Where(item => regex.IsMatch(item.Key))
                 .Select(item => (T)item.Value);
-        }
-
-        /// <summary>
-        /// Tries to get the value stored with the given key.
-        /// </summary>
-        /// <typeparam name="T">Type of the stored value.</typeparam>
-        /// <param name="key">The key the value is stored with.</param>
-        /// <param name="value">A variable that will hold the value stored with the given key, if any exist.</param>
-        /// <returns>true if any value was found stored with the given key.</returns>
-        public bool TryGet<T>(string key, out T value) {
-            value = default(T);
-            if (!IsSet(key)) return false;
-            value = Get<T>(key);
-            return true;
-        }
-
-        /// <summary>
-        /// Tries to get all the values stored in the cache
-        /// that their keys match the given pattern.
-        /// All values must be of the same type.
-        /// </summary>
-        /// <typeparam name="T">Type of the stored values.</typeparam>
-        /// <param name="pattern">The pattern that the keys must match.</param>
-        /// <param name="values">A variable that will hold the values stored with the given pattern, if any exist.</param>
-        /// <returns>true if any value was found stored with the given key.</returns>
-        public bool TryGetByPattern<T>(string pattern, out IEnumerable<T> values) {
-            var regex = pattern.ToSingleLineCaseInsensitiveRegex(true);
-            values = Cache
-                .Where(item => regex.IsMatch(item.Key))
-                .Select(item => (T)item.Value);
-            return values.IsNotEmpty();
         }
 
         /// <summary>
@@ -77,29 +46,28 @@ namespace Core.Cache {
         /// </summary>
         /// <param name="key">The key that is going to be checked against the cache.</param>
         /// <returns>true if any value is stored in the cache with the given key.</returns>
-        public bool IsSet(string key) => Cache.Contains(key);
+        public async Task<bool> IsSet(string key) => Cache.Contains(key);
 
         /// <summary>
         /// Removes the value that is stored in the cache
         /// with the the given key.
         /// </summary>
         /// <param name="key">The key of the value that is going to be removed.</param>
-        public void Remove(string key) => Cache.Remove(key);
+        public async Task Remove(string key) => Cache.Remove(key);
 
         /// <summary>
         /// Removes the value that is stored in the cache
         /// with the the given key.
         /// </summary>
         /// <param name="key">The key of the value that is going to be removed.</param>
-        public void RemoveByPattern(string pattern) {
+        public async Task RemoveByPattern(string pattern) {
             var regex = pattern.ToSingleLineCaseInsensitiveRegex(true);
             var keysToRemove = Cache
                 .Where(item => regex.IsMatch(item.Key))
                 .Select(item => item.Key);
             foreach(var key in keysToRemove) {
-                Remove(key);
+                await Remove(key);
             }
-
         }
 
         /// <summary>
@@ -108,7 +76,7 @@ namespace Core.Cache {
         /// <param name="key">The key that the given value will be stored with.</param>
         /// <param name="value">The value that will be stored with the given key.</param>
         /// <param name="time">The time in minutes that the value will be stored in cache.</param>
-        public void Set(string key, object value, int time) {
+        public async Task Set(string key, object value, int time) {
             if (value == null) return;
             var policy = new CacheItemPolicy();
             policy.AbsoluteExpiration = DateTime.Now + TimeSpan.FromMinutes(time);
@@ -124,9 +92,9 @@ namespace Core.Cache {
         /// <param name="value">The value that will be stored with the given key.</param>
         /// <param name="time">The time in minutes that the value will be stored in cache.</param>
         /// <returns>true if the value was stored in the cache.</returns>
-        public bool SetIfNotExist(string key, object value, int time) {
+        public async Task<bool> SetIfNotExist(string key, object value, int time) {
             if (value == null) return false;
-            if (IsSet(key)) return false;
+            if (await IsSet(key)) return false;
             var policy = new CacheItemPolicy();
             policy.AbsoluteExpiration = DateTime.Now + TimeSpan.FromMinutes(time);
             Cache.Add(new CacheItem(key, value), policy);
@@ -136,9 +104,9 @@ namespace Core.Cache {
         /// <summary>
         /// Clears values stored in the cache.
         /// </summary>
-        public void Clear() {
+        public async Task Clear() {
             foreach (var item in Cache)
-                Remove(item.Key);
+                await Remove(item.Key);
         }
     }
 }
