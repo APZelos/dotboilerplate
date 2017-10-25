@@ -48,6 +48,7 @@
     <Compile Include="Cache\CacheManager.cs" />
     <Compile Include="Cache\ICacheManager.cs" />
     <Compile Include="Data\BaseEntity.cs" />
+    <Compile Include="Data\CachedByIdRepository.cs" />
     <Compile Include="Data\CachedByTableRepository.cs" />
     <Compile Include="Data\IBaseEntity.cs" />
     <Compile Include="Data\IRepository.cs" />
