@@ -57,7 +57,7 @@ namespace Core.Cache {
 
         /// <summary>
         /// Removes the value that is stored in the cache
-        /// with the the given key.
+        /// with the given key.
         /// </summary>
         /// <param name="key">The key of the value that is going to be removed.</param>
         Task Remove(string key);
