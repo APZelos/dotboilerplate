@@ -72,6 +72,8 @@ namespace Core.Cache {
 
         /// <summary>
         /// Sets the value with the given key to the cache.
+        /// If a value with the same key already exist in the
+        /// cache it removes it and sets the new value.
         /// </summary>
         /// <param name="key">The key that the given value will be stored with.</param>
         /// <param name="value">The value that will be stored with the given key.</param>
@@ -80,7 +82,24 @@ namespace Core.Cache {
             if (value == null) return;
             var policy = new CacheItemPolicy();
             policy.AbsoluteExpiration = DateTime.Now + TimeSpan.FromMinutes(time);
-            Cache.Add(new CacheItem(key, value), policy);
+            Cache.Set(new CacheItem(key, value), policy);
+        }
+
+        /// <summary>
+        /// Sets the value with the given key to the cache.
+        /// If a value with the same key already exist in the
+        /// cache it the new value is rejected.
+        /// </summary>
+        /// <param name="key">The key that the given value will be stored with.</param>
+        /// <param name="value">The value that will be stored with the given key.</param>
+        /// <param name="time">The time in minutes that the value will be stored in cache.</param>
+        /// <returns>true if no value was found with the same key in the cache and the given value was added.</returns>
+        public async Task<bool> Add(string key, object value, int time) {
+            if (value == null)
+                return false;
+            var policy = new CacheItemPolicy();
+            policy.AbsoluteExpiration = DateTime.Now + TimeSpan.FromMinutes(time);
+            return Cache.Add(new CacheItem(key, value), policy);
         }
 
         /// <summary>
