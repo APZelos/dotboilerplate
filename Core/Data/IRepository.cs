@@ -56,12 +56,6 @@ namespace Core.Data {
         Task Save();
 
         /// <summary>
-        /// Loads relationship objects for this entity.
-        /// </summary>
-        /// <param name="entity">The entity we want to load relationships for.</param>
-        Task Load(T entity);
-
-        /// <summary>
         /// Attaches entity to the context if is not attached.
         /// </summary>
         /// <param name="entity">The entity we want to attach to the context.</param>

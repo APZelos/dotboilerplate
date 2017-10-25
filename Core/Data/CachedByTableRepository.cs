@@ -110,14 +110,6 @@ namespace Core.Data {
             await CacheTable();
             return result;
         }
-        
-        /// <summary>
-        /// Loads relationship objects for this entity.
-        /// </summary>
-        /// <param name="entity">The entity we want to load relationships for.</param>
-        public Task Load(T entity) {
-            throw new NotImplementedException();
-        }
 
         /// <summary>
         /// Saves changes for this table 
