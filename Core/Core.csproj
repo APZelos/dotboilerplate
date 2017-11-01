@@ -88,6 +88,7 @@
     <Compile Include="Data\IUID.cs" />
     <Compile Include="Data\RepositoryResult.cs" />
     <Compile Include="Infrastructure\IoC\ContainerManager.cs" />
+    <Compile Include="Infrastructure\ITypeFinder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\Extensions.cs" />
   </ItemGroup>
