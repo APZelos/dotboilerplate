@@ -87,6 +87,7 @@
     <Compile Include="Data\ITableName.cs" />
     <Compile Include="Data\IUID.cs" />
     <Compile Include="Data\RepositoryResult.cs" />
+    <Compile Include="Infrastructure\AppDomainTypeFinder.cs" />
     <Compile Include="Infrastructure\IoC\ContainerManager.cs" />
     <Compile Include="Infrastructure\ITypeFinder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
