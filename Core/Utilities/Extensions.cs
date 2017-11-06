@@ -323,6 +323,15 @@ namespace Core.Utilities {
         /// <summary>
         /// Indicates if the value is equal to at least one of the given args.
         /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="value"></param>
+        /// <param name="args">An enumerable of values that the value will be checked against.</param>
+        /// <returns>true if the value is equal to at least one of the given args.</returns>
+        public static bool IsIn<T>(this T value, IEnumerable<T> args) => args.Any(arg => arg.Equals(value));
+
+        /// <summary>
+        /// Indicates if the value is equal to at least one of the given args.
+        /// </summary>
         /// <param name="value"></param>
         /// <param name="args">An array of values that the value will be checked against.</param>
         /// <returns>true if the value is equal to at least one of the given args.</returns>

@@ -173,7 +173,7 @@ namespace Core.Infrastructure {
                 .Where(assembly => Matches(assembly.FullName));
 
             foreach (var assembly in assembliesToAdd) {
-                if (assembly.FullName.IsIn(addedAssemblyNames.ToArray()))
+                if (assembly.FullName.IsIn(addedAssemblyNames))
                     continue;
                 assemblies.Add(assembly);
                 addedAssemblyNames.Add(assembly.FullName);
@@ -188,7 +188,7 @@ namespace Core.Infrastructure {
         protected virtual void AddConfiguredAssemblies(List<string> addedAssemblyNames, List<Assembly> assemblies) {
             foreach (string assemblyName in AssemblyNames) {
                 var assembly = Assembly.Load(assemblyName);
-                if (assembly.FullName.IsIn(addedAssemblyNames.ToArray()))
+                if (assembly.FullName.IsIn(addedAssemblyNames))
                     continue;
                 assemblies.Add(assembly);
                 addedAssemblyNames.Add(assembly.FullName);
@@ -217,7 +217,7 @@ namespace Core.Infrastructure {
             foreach (var dll in Directory.GetFiles(directoryPath, "*.dll")) {
                 try {
                     var assemblyName = AssemblyName.GetAssemblyName(dll);
-                    if (!Matches(assemblyName.FullName) || assemblyName.FullName.IsIn(loadedAssemblyNames.ToArray()))
+                    if (!Matches(assemblyName.FullName) || assemblyName.FullName.IsIn(loadedAssemblyNames))
                         continue;
                     AppDomain.Load(assemblyName);
                 } catch (BadImageFormatException ex) {
