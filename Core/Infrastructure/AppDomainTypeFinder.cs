@@ -138,7 +138,7 @@ namespace Core.Infrastructure {
         /// Gets all the assemblies.
         /// </summary>
         /// <returns>a list of assemblies.</returns>
-        public IList<Assembly> GetAssemblies() {
+        public virtual IList<Assembly> GetAssemblies() {
             var addedAssemblyNames = new List<string>();
             var assemblies = new List<Assembly>();
 

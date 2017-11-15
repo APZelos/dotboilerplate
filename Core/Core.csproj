@@ -98,6 +98,7 @@
     <Compile Include="Infrastructure\ITypeFinder.cs" />
     <Compile Include="Infrastructure\Mapper\BaseMapConfig.cs" />
     <Compile Include="Infrastructure\Mapper\IMapConfig.cs" />
+    <Compile Include="Infrastructure\WebAppTypeFinder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\Extensions.cs" />
   </ItemGroup>
