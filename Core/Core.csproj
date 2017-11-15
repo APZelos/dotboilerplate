@@ -92,6 +92,7 @@
     <Compile Include="Data\IUID.cs" />
     <Compile Include="Data\RepositoryResult.cs" />
     <Compile Include="Infrastructure\AppDomainTypeFinder.cs" />
+    <Compile Include="Infrastructure\Engine.cs" />
     <Compile Include="Infrastructure\IEngine.cs" />
     <Compile Include="Infrastructure\IoC\ContainerManager.cs" />
     <Compile Include="Infrastructure\IoC\IDependencyRegistrar.cs" />

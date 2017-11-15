@@ -12,7 +12,7 @@ namespace Core.Infrastructure.Mapper {
     /// </summary>
     /// <typeparam name="S">The type of the source object.</typeparam>
     /// <typeparam name="D">The type of the destination object.</typeparam>
-    public abstract class BaseMapConfig<S, D> : IMapConfig<S, D> {
+    public abstract class BaseMapConfig<S, D> : IMapConfig {
 
         /// <summary>
         /// Get the configurations.
