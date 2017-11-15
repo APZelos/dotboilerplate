@@ -96,6 +96,7 @@
     <Compile Include="Infrastructure\IoC\ContainerManager.cs" />
     <Compile Include="Infrastructure\IoC\IDependencyRegistrar.cs" />
     <Compile Include="Infrastructure\ITypeFinder.cs" />
+    <Compile Include="Infrastructure\Mapper\BaseMapConfig.cs" />
     <Compile Include="Infrastructure\Mapper\IMapConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\Extensions.cs" />
