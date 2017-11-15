@@ -79,6 +79,7 @@
   <ItemGroup>
     <Compile Include="Cache\CacheManager.cs" />
     <Compile Include="Cache\ICacheManager.cs" />
+    <Compile Include="Config\EngineConfig.cs" />
     <Compile Include="Data\BaseEntity.cs" />
     <Compile Include="Data\CachedByIdRepository.cs" />
     <Compile Include="Data\CachedByTableRepository.cs" />
